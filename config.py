@@ -6,7 +6,9 @@ class Config:
     '''
    
     COUNTRIES_BASE_URL='https://api.covid19api.com/countries'
-
+    @staticmethod
+    def init_app(app):
+        pass
 
 class ProdConfig(Config):
     '''
@@ -27,12 +29,8 @@ class DevConfig(Config):
     '''
 
     DEBUG = True
-class TestConfig(Config):
 
-    
-
- config_options = {
+config_options = {
 'development': DevConfig,
 'production':  ProdConfig
-'testing':  TestConfig
 }   
