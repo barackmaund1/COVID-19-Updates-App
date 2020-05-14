@@ -4,7 +4,7 @@ class Config:
     '''
     General configuration parent class
     '''
-   
+    KENYAN_BASE_URL='https://coronavirus-19-api.herokuapp.com/countries/{}'
     COUNTRIES_BASE_URL='https://api.covid19api.com/countries'
     @staticmethod
     def init_app(app):
