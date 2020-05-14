@@ -6,6 +6,7 @@ class Config:
     '''
     KENYAN_BASE_URL='https://coronavirus-19-api.herokuapp.com/countries/{}'
     COUNTRIES_BASE_URL='https://api.covid19api.com/countries'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/covid'
     @staticmethod
     def init_app(app):
         pass
@@ -27,7 +28,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/covid'
     DEBUG = True
 
 config_options = {
