@@ -3,6 +3,7 @@ from . import main
 from ..requests import get_countries
 from ..model import Country
 from flask_login import login_required
+from ..email import mail_message
 
 @main.route('/')
 def index():
