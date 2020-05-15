@@ -19,7 +19,7 @@ def get_countries():
     headers= {}
 
     response = requests.request("GET", url, headers=headers, data = payload)
-    import pdb; pdb.set_trace()
+   
 
     return response.text.encode('utf8')
 
