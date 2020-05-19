@@ -4,13 +4,42 @@ import requests
 from config import Config
 
 
-# Getting the Covid base url
+# Getting the movie base url
 Countries_url = None
 Kenyan_url=None
 def configure_request(app):
     global Countries_url
     Countries_url = app.config['COUNTRIES_BASE_URL']
     # Kenyan_url=app.config['KENYAN_BASE_URL']
+
+
+# def get_countries(country_list): 
+#     url = Countries_url
+
+#     payload = {}
+#     headers= {}
+
+#     response = requests.request("GET", url, headers=headers, data = payload)
+   
+#     data = response.json()
+  
+#     country_results = []
+#     for country_item in data:
+#         print(country_item)
+#         country =country_item.get('country')
+#         cases =country_item.get('cases') 
+#         todayCases = country_item.get('todayCases')
+#         todayDeath =country_item.get('todayDeath') 
+#         recovered =country_item.get('recovered') 
+#         active =country_item.get('active') 
+#         critical =country_item.get('Critical') 
+#         totalTests =country_item.get('totalTests') 
+#         country_object = Country(country,cases,todayCases,todayDeath,recovered,active,critical,
+#         totalTests)
+#         country_results.append(country_object)
+            
+
+#     return country_results
 
 # def get_countries(): 
 #     url = Countries_url
@@ -145,20 +174,15 @@ def process_results(country_list):
     country_results = []
     for country_item in country_list:
         
-        country=country_item.get('country')
-        cases=country_item.get('cases')
-        todayCases=country_item.get('today')
-        deaths=country_item.get('deaths')
-        todayDeaths=country_item.get('todayDeaths')
-        recovered=country_item.get('recovered')
-        active=country_item.get('active')
-        critical=country_item.get('critical')
-        casesPerOneMillion=country_item.get('casePerOnemillion')
-        deathsPerOneMillion=country_item.get('deathPerOneMillion')
-        totalTests=country_item.get('totalTests')
-        testsPerOneMillion=country_item.get('testsPerOneMillion')
-        
-        country_object = Country(country,cases,todayCases,deaths,todayDeaths,recovered,active,critical,casesPerOneMillion,totalTests,testsPerOneMillion)
+        country =country_item.get('country')
+        cases =country_item.get('cases') 
+        todayCases = country_item.get('todayCases')
+        todayDeath =country_item.get('todayDeath') 
+        recovered =country_item.get('recovered') 
+        active =country_item.get('active') 
+        critical =country_item.get('Critical') 
+        totalTests =country_item.get('totalTests') 
+        country_object = Country(country,cases,todayCases,todayDeath,recovered,active,critical,
+        totalTests)
         country_results.append(country_object)
-        import pdb; pdb.set_trace()
     return country_results

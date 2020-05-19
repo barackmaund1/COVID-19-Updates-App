@@ -5,16 +5,16 @@ from ..model import Country
 from flask_login import login_required
 from ..corona import Coronavirus
 
-@main.route('/',methods = ['POST','GET'])
+@main.route('/')
 def index():
 
     '''
     View root page function that returns the index page and its data
     '''
     title='Covid19-updates'
-    countries=get_countries()
+    covid_results=get_countries()
 
-    return render_template('index.html', title = title, countries=countries )
+    return render_template('games.html', title = title, countries=covid_results )
 @main.route('/subscribe/',methods = ['POST','GET'])
 @login_required
 def subscribe():

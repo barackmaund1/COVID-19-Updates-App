@@ -10,8 +10,8 @@ class Country:
     '''
     Source class to define Source Objects
     '''
-    def __init__(self,country,cases,todayCases,deaths,todayDeaths,recovered,active,critical,casesPerOneMillion,totalTests,testsPerOneMillion):
-        self.country=country
+    def __init__(self,country,cases,todayCases,deaths,todayDeaths,recovered,active,critical):
+        self.country =country
         self.cases=cases
         self.todayCases=todayCases
         self.deaths=deaths
@@ -19,9 +19,6 @@ class Country:
         self.recovered=recovered
         self.active=active
         self.critical=critical
-        self.casesPerOneMillion=casesPerOneMillion
-        self.totalTests=totalTests
-        self.testsPerOneMillion=testsPerOneMillion
 
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
