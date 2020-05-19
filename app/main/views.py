@@ -14,7 +14,7 @@ def index():
     title='Covid19-updates'
     covid_results=get_countries()
 
-    return render_template('games.html', title = title, countries=covid_results )
+    return render_template('base.html', title = title, countries=covid_results )
 @main.route('/subscribe/',methods = ['POST','GET'])
 @login_required
 def subscribe():
