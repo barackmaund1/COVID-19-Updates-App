@@ -5,7 +5,7 @@ class Config:
     General configuration parent class
     '''
     KENYAN_BASE_URL='https://coronavirus-19-api.herokuapp.com/countries/{}'
-    COUNTRIES_BASE_URL='https://api.covid19api.com/countries'
+    COUNTRIES_BASE_URL='https://coronavirus-19-api.herokuapp.com/countries'
     
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/covid'
     SECRET_KEY = os.environ.get('SECRET_KEY')

@@ -4,7 +4,7 @@ import requests
 from config import Config
 
 
-# Getting the movie base url
+# Getting the Covid base url
 Countries_url = None
 Kenyan_url=None
 def configure_request(app):
@@ -12,16 +12,16 @@ def configure_request(app):
     Countries_url = app.config['COUNTRIES_BASE_URL']
     # Kenyan_url=app.config['KENYAN_BASE_URL']
 
-def get_countries(): 
-    url = Countries_url
+# def get_countries(): 
+#     url = Countries_url
 
-    payload = {}
-    headers= {}
+#     payload = {}
+#     headers= {}
 
-    response = requests.request("GET", url, headers=headers, data = payload)
-   
+#     response = requests.request("GET", url, headers=headers, data = payload)
+#     import pdb; pdb.set_trace()
 
-    return response.text.encode('utf8')
+#     return response.text.encode('utf8')
 
 
 # def get_countries(countryName):   
@@ -115,42 +115,50 @@ def get_countries():
 
 #     return country_results    
 
-# def get_countries():   
-#     '''
-#     Function that gets the json response to our url request
-#     '''
-#     get_countries_url = Countries_url.format()
+def get_countries():   
+    '''
+    Function that gets the json response to our url request
+    '''
+    get_countries_url = Countries_url.format()
 
-#     with urllib.request.urlopen(get_countries_url) as url:
-#         get_countries_data = url.read()
-#         get_countries_response = json.loads(get_countries_data)
-#         print(get_countries_response)
-#         country_results = None
+    with urllib.request.urlopen(get_countries_url) as url:
+        get_countries_data = url.read()
+        get_countries_response = json.loads(get_countries_data)
+        
+        country_results = None
 
-#         if get_countries_response[0]:
-#             country_results_list = get_countries_response[0]
-#             country_results = process_results(country_results_list)
-#     return country_results    
+        if get_countries_response:
+            country_results_list = get_countries_response
+            country_results = process_results(country_results_list)
+    return country_results    
 
-# def process_results(country_list):
-#     '''
-#     Function  that processes the movie result and transform them to a list of Objects
+def process_results(country_list):
+    '''
+    Function  that processes the movie result and transform them to a list of Objects
 
-#     Args:
-#         movie_list: A list of dictionaries that contain movie details
+    Args:
+        movie_list: A list of dictionaries that contain movie details
 
-#     Returns :
-#         movie_results: A list of movie objects
-#     '''
-#     country_results = []
-#     for country_item in country_list:
-#         print(country_item)
-#         country =country_item.getdata('country')
-#         slug =country_item.getdata('slug') 
-#         IS02 = country_item.getdata('IS02')
-    
-#         if poster:
-#             country_object = Country(country,slug,IS02)
-#             country_results.append(country_object)
-
-#     return country_results
+    Returns :
+        movie_results: A list of movie objects
+    '''
+    country_results = []
+    for country_item in country_list:
+        
+        country=country_item.get('country')
+        cases=country_item.get('cases')
+        todayCases=country_item.get('today')
+        deaths=country_item.get('deaths')
+        todayDeaths=country_item.get('todayDeaths')
+        recovered=country_item.get('recovered')
+        active=country_item.get('active')
+        critical=country_item.get('critical')
+        casesPerOneMillion=country_item.get('casePerOnemillion')
+        deathsPerOneMillion=country_item.get('deathPerOneMillion')
+        totalTests=country_item.get('totalTests')
+        testsPerOneMillion=country_item.get('testsPerOneMillion')
+        
+        country_object = Country(country,cases,todayCases,deaths,todayDeaths,recovered,active,critical,casesPerOneMillion,totalTests,testsPerOneMillion)
+        country_results.append(country_object)
+        import pdb; pdb.set_trace()
+    return country_results

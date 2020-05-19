@@ -5,7 +5,7 @@ from ..model import Country
 from flask_login import login_required
 from ..corona import Coronavirus
 
-@main.route('/')
+@main.route('/',methods = ['POST','GET'])
 def index():
 
     '''

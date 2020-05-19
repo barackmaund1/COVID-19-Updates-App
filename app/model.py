@@ -10,11 +10,18 @@ class Country:
     '''
     Source class to define Source Objects
     '''
-    def __init__(self,country,slug,IS02):
-        self.country =country
-        self.slug = slug
-        self.IS02 = IS02
-
+    def __init__(self,country,cases,todayCases,deaths,todayDeaths,recovered,active,critical,casesPerOneMillion,totalTests,testsPerOneMillion):
+        self.country=country
+        self.cases=cases
+        self.todayCases=todayCases
+        self.deaths=deaths
+        self.todayDeaths=todayDeaths
+        self.recovered=recovered
+        self.active=active
+        self.critical=critical
+        self.casesPerOneMillion=casesPerOneMillion
+        self.totalTests=totalTests
+        self.testsPerOneMillion=testsPerOneMillion
 
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
