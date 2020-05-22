@@ -19,6 +19,20 @@ class Country:
         self.recovered=recovered
         self.active=active
         self.critical=critical
+class Kenyan:
+    def __init__(self,country,cases,todayCases,deaths,todayDeaths,recovered,active,critical,casesPerOneMillion,deathsPerOneMillion,totalTests):
+        self.country =country
+        self.cases =cases 
+        self.todayCases = todayCases
+        self.deaths=deaths
+        self.todayDeaths =todayDeaths
+        self.recovered =recovered 
+        self.active =active
+        self.critical =critical
+        self.casesPerOneMillion =casesPerOneMillion
+        self.deathsPerOneMillion=deathsPerOneMillion
+        self.totalTests =totalTests 
+        
 
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
@@ -40,6 +54,15 @@ class User(UserMixin,db.Model):
 
     def verify_password(self,password):
         return check_password_hash(self.pass_secure,password)   
-class Coronavirus():
-    def __init__(self):
-        self.driver = webdriver.Chrome()                    
+class Subscriber(db.Model):
+    __tablename__='subscribers'
+
+    id=db.Column(db.Integer,primary_key=True)
+    email = db.Column(db.String(255),index=True)
+    user_id=db.Column(db.Integer,db.ForeignKey("users.id"))  
+    def save_subscriber(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def __repr__(self):
+        return f'Subscriber {self.email}'                  

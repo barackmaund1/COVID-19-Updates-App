@@ -1,14 +1,1 @@
 
-{% extends 'base.html'%}
-    
-        <!--Content block-->
-    {% block content %}
-
-      <h>list of countries</h>
-      
-      {% for country in countries %}
-      <ul>
-          <li>{{country.country}}</li>
-      </ul> 
-       {%endfor%}
-    {% endblock%}

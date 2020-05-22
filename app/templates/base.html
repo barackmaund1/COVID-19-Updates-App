@@ -65,7 +65,7 @@
 								<li><a href="{{url_for('auth.logout')}}">Logout</a></li>
 							</ul>
 						</li>
-						<li><a href="review.html">Stats</a></li>
+						<li><a href="/">Stats</a></li>
 						<li><a href="blog.html">News</a></li>
 						<li><a href="contact.html">Contact</a></li>
 					</ul>
@@ -86,14 +86,14 @@
 				<div class="container">
 					<h2>Covid-19 stats!</h2>
 					<p>Coronavirus disease (COVID-19) is an infectious disease caused by ,<br>a newly discovered coronavirus</p>
-					<a href="#" class="site-btn">Read More  <img src="{{url_for('static',filename='img/icons/double-arrow.png')}}" alt="#"/></a>
+					<a href="{{url_for('main.allcountries')}}"class="site-btn">View stats   <img src="{{url_for('static',filename='img/icons/double-arrow.png')}}" alt="#"/></a>
 				</div>
 			</div>
 			<div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="{{url_for('static',filename='img/slider-bg-2.jpg')}}">
 				<div class="container">
 					<h2>Covid-19 stats!</h2>
 					<p>The COVID-19 virus spreads primarily through droplets of saliva or discharge from the nose when an infected person coughs or sneezes,,<br> so it’s important that you also practice respiratory etiquette (for example, by coughing into a flexed elbow).</p>
-					<a href="#" class="site-btn">Read More  <img src="{{url_for('static',filename='img/icons/double-arrow.png')}}" alt="#"/></a>
+					<a href="{{url_for('main.allcountries')}}" class="site-btn">View stats  <img src="{{url_for('static',filename='img/icons/double-arrow.png')}}" alt="#"/></a>
 				</div>
 			</div>
 		</div>
@@ -113,49 +113,25 @@
 			</div>
 		</div>
   </section>
-	<!-- Intro section -->
-	<section class="intro-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="intro-text-box text-box text-white">
-						<div class="top-meta">11.11.18  /  in <a href="">kenya</a></div>
-						<h3>The best online is out now!</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida....</p>
-						<a href="#" class="read-more">Read More  <img src="img/icons/double-arrow.png" alt="#"/></a>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="intro-text-box text-box text-white">
-						<div class="top-meta">11.11.18  /  in <a href="">Tanzania</a></div>
-						<h3>Top 5 best in november</h3>
-						<p>Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum  labore suspendisse ultrices gravida....</p>
-						<a href="#" class="read-more">Read More  <img src="img/icons/double-arrow.png" alt="#"/></a>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="intro-text-box text-box text-white">
-						<div class="top-meta">11.11.18  /  in <a href="">Usa</a></div>
-						<h3>Get this  at a promo price</h3>
-						<p>Sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida ncididunt ut labore ....</p>
-						<a href="#" class="read-more">Read More  <img src="img/icons/double-arrow.png" alt="#"/></a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<!-- Featured section end-->
-
+	
 
 
 	<!-- Newsletter section -->
 	<section class="newsletter-section">
 		<div class="container">
+
 			<h2>Subscribe to our newsletter</h2>
-			<form class="newsletter-form">
-				<input type="text" placeholder="ENTER YOUR E-MAIL">
+			{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+			  <div class=flashes>
+			  {% for category, message in messages %}
+				<div class=" alert alert-{{ category }}">{{ message }}</div>
+			  {% endfor %}
+			  </div>
+			{% endif %}
+		  {% endwith %}
+			<form class="newsletter-form" action="{{url_for('main.subscribe')}}" method="post">
+				<input type="text" name ="subscriber" placeholder="ENTER YOUR E-MAIL">
 				<button class="site-btn">subscribe  <img src="{{ url_for('static', filename='img/icons/double-arrow.png') }}" alt="#"/></button>
 			</form>
 		</div>
@@ -167,13 +143,13 @@
 	<footer class="footer-section">
 		<div class="container">
 			<div class="footer-left-pic">
-				<img src="{{ url_for('static', filename='img/footer-left-pic.png') }}" alt="">
+				<!-- <img src="{{ url_for('static', filename='img/footer-left-pic.png') }}" alt=""> -->
 			</div>
 			<div class="footer-right-pic">
-				<img src="{{ url_for('static', filename='img/footer-right-pic.png') }}" alt="">
+				<!-- <img src="{{ url_for('static', filename='img/footer-right-pic.png') }}" alt=""> -->
 			</div>
 			<a href="#" class="footer-logo">
-				<img src="{{ url_for('static', filename='./img/logo.webp') }}" width="30%" height="20%" alt="">
+				<img src="{{ url_for('static', filename='./img/logo.webp') }}" width="20%" height="5%" alt="">
 			</a>
 			<ul class="main-menu footer-menu">
 				<li><a href="">Home</a></li>
