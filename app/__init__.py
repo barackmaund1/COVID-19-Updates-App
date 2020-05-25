@@ -4,11 +4,11 @@ from config import config_options
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_mail import Mail
-
+from flask_collect import Collect
 
 
 bootstrap = Bootstrap()
-
+collect = Collect()
 
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -29,7 +29,7 @@ def create_app(config_name):
     login_manager.init_app(app)
     db.init_app(app)
     mail.init_app(app)
-   
+    collect.init_app(app)
     # Registering the blueprint
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
