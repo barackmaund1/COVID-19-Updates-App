@@ -9,7 +9,7 @@ from flask_collect import Collect
 
 bootstrap = Bootstrap()
 collect = Collect()
-
+manager = Manager()
 db = SQLAlchemy()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
@@ -30,6 +30,7 @@ def create_app(config_name):
     db.init_app(app)
     mail.init_app(app)
     collect.init_app(app)
+    collect.init_script(manager)
     # Registering the blueprint
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
