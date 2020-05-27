@@ -34,6 +34,7 @@ def allcountries():
 @login_required
 def subscribe():
     if request.method == "POST":
+        
         email = request.form.get('subscriber')
         new_subscriber = Subscriber(email = email)
         new_subscriber.save_subscriber()
@@ -43,7 +44,7 @@ def subscribe():
         flash('Sucessfully subscribed  and confirm your email for updates')
     
         return redirect(url_for('main.index')) 
-    return render_template('auth/register.html')       
+    return redirect(url_for('auth.login'))       
  
 x=datetime.today()
 y=x.replace(day=x.day+1, hour=1, minute=0, second=0, microsecond=0) + timedelta(days=1)
