@@ -19,6 +19,9 @@ class Country:
         self.recovered=recovered
         self.active=active
         self.critical=critical
+
+        def __repr__(self):
+            return f'Subscriber {self.deaths}'
 class Kenyan:
     def __init__(self,country,cases,todayCases,deaths,todayDeaths,recovered,active,critical,casesPerOneMillion,deathsPerOneMillion,totalTests):
         self.country =country
@@ -32,7 +35,8 @@ class Kenyan:
         self.casesPerOneMillion =casesPerOneMillion
         self.deathsPerOneMillion=deathsPerOneMillion
         self.totalTests =totalTests 
-        
+    def __repr__(self):
+        return f'Subscriber {self.deaths}'                      
 
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
@@ -60,7 +64,7 @@ class Subscriber(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     email = db.Column(db.String(255),index=True)
     user_id=db.Column(db.Integer,db.ForeignKey("users.id"))  
-    user=db.relationship('User',backref='username')
+    user=db.relationship('User',backref='user')
     def save_subscriber(self):
         db.session.add(self)
         db.session.commit()

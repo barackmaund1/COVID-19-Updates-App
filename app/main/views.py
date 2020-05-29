@@ -27,7 +27,7 @@ def allcountries():
     View root page function that returns the index page and its data
     '''
     title='Updates :: allcountries'
-    covid_results=get_countries('country')
+    covid_results=get_countries()
 
     return render_template('allstats.html', title = title, countries=covid_results )     
 @main.route('/subscribe/',methods = ['POST','GET'])

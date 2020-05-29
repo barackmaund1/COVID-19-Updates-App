@@ -7,7 +7,7 @@ class Config:
     KENYAN_BASE_URL='https://coronavirus-19-api.herokuapp.com/countries/kenya'
     COUNTRIES_BASE_URL='https://coronavirus-19-api.herokuapp.com/countries'
     
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/covid'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/covid1'
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -36,7 +36,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/covid'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/covid1'
     DEBUG = True
 
 config_options = {

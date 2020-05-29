@@ -13,16 +13,16 @@ def configure_request(app):
     Kenyan_url=app.config['KENYAN_BASE_URL']
 
 
-def get_countries(country_list): 
+def get_countries(): 
     url = Countries_url
 
     payload = {}
     headers= {}
 
     response = requests.request("GET", url, headers=headers, data = payload)
-   
+    
     data = response.json()
-  
+    
     country_results = []
     for country_item in data:
         
@@ -38,7 +38,7 @@ def get_countries(country_list):
         totalTests)
         country_results.append(country_object)
             
-
+    
     return country_results
 
 
