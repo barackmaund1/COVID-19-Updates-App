@@ -58,15 +58,15 @@
 
 					<!-- Menu -->
 					<ul class="main-menu primary-menu">
-						<li><a href="home.html">Home</a></li>
+						<li><a href="/">Home</a></li>
 						{% if current_user.is_authenticated %}
 						<li><a href=""><strong>{{current_user.username}}</strong></a>
 							<ul class="sub-menu">
 								<li><a href="{{url_for('auth.logout')}}">Logout</a></li>
 							</ul>
 						</li>
-						<li><a href="/">Stats</a></li>
-						<li><a href="blog.html">News</a></li>
+						<li><a href="#">Stats</a></li>
+						<li><a href="#">News</a></li>
 						<li><a href="contact.html">Contact</a></li>
 					</ul>
 					{% else %}
@@ -130,7 +130,7 @@
 			  </div>
 			{% endif %}
 		  {% endwith %}
-			<form class="newsletter-form" action="{{url_for('main.subscribe')}}" method="post">
+			<form id="new" class="newsletter-form" action="{{url_for('main.subscribe')}}" method="post">
 				<input type="text" name ="subscriber" placeholder="ENTER YOUR E-MAIL">
 				<button class="site-btn">subscribe  <img src="{{ url_for('static', filename='img/icons/double-arrow.png') }}" alt="#"/></button>
 			</form>
